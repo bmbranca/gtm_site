@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boot Data Form</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MQKWX6XL");
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MQKWX6XL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <h1>Boot Data Form</h1>
+
+    <form id="bootForm">
+      <label for="boot_data_user_id">Boot with User ID:</label>
+      <input
+        type="text"
+        id="boot_data_user_id"
+        name="boot_data_user_id"
+      /><br /><br />
+
+      <label for="boot_data_email">Boot with Email:</label>
+      <input
+        type="email"
+        id="boot_data_email"
+        name="boot_data_email"
+      /><br /><br />
+
+      <label for="boot_data_custom_name">Custom Attribute Name:</label>
+      <input
+        type="text"
+        id="boot_data_custom_name"
+        name="boot_data_custom_name"
+      /><br /><br />
+
+      <label for="boot_data_custom_value">Custom Attribute Value:</label>
+      <input
+        type="text"
+        id="boot_data_custom_value"
+        name="boot_data_custom_value"
+      /><br /><br />
+
+      <button type="button" onclick="submitBootData()">Submit Boot Data</button>
+    </form>
+
+    <div>
+      <button onclick="showMessenger()">Show Messenger</button>
+      <button onclick="closeMessenger()">Close Messenger</button>
+      <button onclick="updateUser()">Update User</button>
+    </div>
+    <br />
+    <div>
+      <button onclick="shutdownSystem()">Shutdown</button>
+    </div>
+
+    <script>
+      function submitBootData() {
+        var boot_user_id = document.getElementById("boot_data_user_id").value;
+        var boot_email = document.getElementById("boot_data_email").value;
+        var attribute_name = document.getElementById(
+          "boot_data_custom_name"
+        ).value;
+        var attribute_value = document.getElementById(
+          "boot_data_custom_value"
+        ).value;
+
+        // Push to the dataLayer
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "bootDataSubmitted",
+          boot_user_id: boot_user_id,
+          boot_email: boot_email,
+          attribute_name: attribute_name,
+          attribute_value: attribute_value,
+        });
+
+        console.log("Boot Data Submitted to Data Layer");
+      }
+
+      function showMessenger() {
+        console.log("Show Messenger button clicked");
+      }
+
+      function closeMessenger() {
+        console.log("Close Messenger button clicked");
+      }
+
+      function shutdownSystem() {
+        console.log("Shutdown button clicked");
+      }
+
+      function updateUser() {
+        console.log("Show Messenger button clicked");
+      }
+    </script>
+  </body>
+</html>
